@@ -143,6 +143,50 @@
                                 <source>message.created_successfully</source>
                                 <target>Utworzono pomyślnie</target>
                     </trans-unit>
+       <trans-unit id="action_logout">
+                                      <source>action_logout</source>
+                                      <target>Wyloguj</target>
+       </trans-unit>
+       <trans-unit id="action_login">
+                     <source>action_login</source>
+                     <target>Zaloguj</target>
+        </trans-unit>
+       <trans-unit id="label.email">
+                     <source>label.email</source>
+                     <target>Email</target>
+       </trans-unit>
+       <trans-unit id="label.password">
+                     <source>label.password</source>
+                     <target>Hasło</target>
+       </trans-unit>
+       <trans-unit id="label.author">
+                            <source>label.author</source>
+                            <target>Twórca</target>
+              </trans-unit>
+              <trans-unit id="action.change">
+                                     <source>action.change</source>
+                                     <target>Edytuj konto</target>
+                             </trans-unit>
+<trans-unit id="message.changed_successfully">
+                                <source>message.changed_successfully</source>
+                                <target>Zmieniono pomyślnie</target>
+                  </trans-unit>
+         <trans-unit id="title.change">
+                                <source>title.change</source>
+                                <target>Edytuj konto</target>
+                  </trans-unit>
+         <trans-unit id="label.current_password">
+                        <source>label.current_password</source>
+                        <target>Obecne hasło</target>
+                  </trans-unit>
+         <trans-unit id="label.new_password">
+                        <source>label.new_password</source>
+                        <target>Nowe hasło</target>
+         </trans-unit>
+         <trans-unit id="label.confirm_password">
+                        <source>label.confirm_password</source>
+                        <target>Potwierdź hasło</target>
+         </trans-unit>
 
     </body>
   </file>

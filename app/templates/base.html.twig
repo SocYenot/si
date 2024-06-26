@@ -13,7 +13,27 @@
     {% endblock %}
 </head>
 <body>
-<main role="main" class="container-fluid">
+    <main role="main" class="container-fluid">
+    <div class="container">
+        <div class="d-flex flex-row-reverse">
+        <div class="text-end">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div>{{ app.user.email }}</div>
+            <div>
+                <a href="{{ url('app_logout') }}" class="btn btn-outline-primary">{{ 'action_logout'|trans }}</a>
+            </div>
+            <div>
+                <a href="{{ path('change') }}" class="btn btn-outline-primary">{{ 'action.change'|trans }}</a>
+            </div>
+        {% else %}
+            <div>
+                <a href="{{ url('app_login') }}" class="btn btn-outline-primary">{{ 'action_login'|trans }}</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    {% endif %}
+
     <div class="container-fluid">
         <div class="container-fluid">
             {% include 'default/_flash_messages.html.twig' %}

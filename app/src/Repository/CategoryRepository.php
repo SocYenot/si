@@ -5,12 +5,11 @@
 namespace App\Repository;
 
 use App\Entity\Category;
-use App\Service\CategoryServiceInterface;
-use App\Form\Type\CategoryType;
+use Doctrine\ORM\EntityManager;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\NonUniqueResultException;
-use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**

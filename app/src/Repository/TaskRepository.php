@@ -7,11 +7,17 @@ namespace App\Repository;
 
 use App\Entity\Category;
 use App\Entity\Task;
+use App\Dto\TaskListFiltersDto;
+use Doctrine\ORM\EntityManager;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * Class TaskRepository.
@@ -30,25 +36,55 @@ class TaskRepository extends ServiceEntityRepository
      *
      * @param ManagerRegistry $registry Manager registry
      */
-    public function __construct(ManagerRegistry $registry)
+
+    private Security $security;
+    public function __construct(ManagerRegistry $registry, Security $security)
     {
         parent::__construct($registry, Task::class);
+        $this->security = $security;
+    }
+
+    /**
+     * Query tasks by author.
+     *
+     * @param UserInterface      $user    User entity
+     * @param TaskListFiltersDto $filters Filters
+     *
+     * @return QueryBuilder Query builder
+     */
+    public function queryByAuthor(UserInterface $user, TaskListFiltersDto $filters): QueryBuilder
+    {
+        $queryBuilder = $this->queryAll($filters);
+
+        $queryBuilder->andWhere('task.author = :author')
+            ->setParameter('author', $user);
+
+        return $queryBuilder;
     }
 
     /**
      * Query all records.
      *
+     * @param TaskListFiltersDto $filters Filters
+     *
      * @return QueryBuilder Query builder
      */
-    public function queryAll(): QueryBuilder
+    public function queryAll(TaskListFiltersDto $filters): QueryBuilder
     {
-        return $this->getOrCreateQueryBuilder()
+        $queryBuilder = $this->getOrCreateQueryBuilder()
             ->select(
                 'partial task.{id, createdAt, updatedAt, title}',
                 'partial category.{id, title}'
             )
             ->join('task.category', 'category')
             ->orderBy('task.updatedAt', 'DESC');
+
+        if (!$this->security->isGranted('ROLE_ADMIN')) {
+            // Apply regular user filters
+            $queryBuilder = $this->applyFiltersToList($queryBuilder, $filters);
+        }
+
+        return $this->applyFiltersToList($queryBuilder, $filters);
     }
 
     /**
@@ -114,4 +150,21 @@ class TaskRepository extends ServiceEntityRepository
         return $queryBuilder ?? $this->createQueryBuilder('task');
     }
 
+    /**
+     * Apply filters to paginated list.
+     *
+     * @param QueryBuilder       $queryBuilder Query builder
+     * @param TaskListFiltersDto $filters      Filters
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function applyFiltersToList(QueryBuilder $queryBuilder, TaskListFiltersDto $filters): QueryBuilder
+    {
+        if ($filters->category instanceof Category) {
+            $queryBuilder->andWhere('category = :category')
+                ->setParameter('category', $filters->category);
+        }
+
+        return $queryBuilder;
+    }
 }

@@ -155,6 +155,50 @@
               <source>title.note_list</source>
               <target>Note list</target>
     </trans-unit>
+  <trans-unit id="action_logout">
+                      <source>action_logout</source>
+                      <target>Log out</target>
+         </trans-unit>
+         <trans-unit id="action_login">
+                       <source>action_login</source>
+                       <target>Log in</target>
+          </trans-unit>
+         <trans-unit id="label.email">
+                       <source>label.email</source>
+                       <target>Email</target>
+         </trans-unit>
+         <trans-unit id="label.password">
+                       <source>label.password</source>
+                       <target>Password</target>
+         </trans-unit>
+         <trans-unit id="label.author">
+                       <source>label.author</source>
+                       <target>Author</target>
+         </trans-unit>
+         <trans-unit id="message.changed_successfully">
+                                <source>message.changed_successfully</source>
+                                <target>Changed successfully</target>
+                  </trans-unit>
+         <trans-unit id="title.change">
+                                <source>title.change</source>
+                                <target>Edit account</target>
+                  </trans-unit>
+         <trans-unit id="action.change">
+                       <source>action.change</source>
+                       <target>Edit account</target>
+               </trans-unit>
+         <trans-unit id="label.current_password">
+                        <source>label.current_password</source>
+                        <target>Current password</target>
+                  </trans-unit>
+         <trans-unit id="label.new_password">
+                        <source>label.new_password</source>
+                        <target>New password</target>
+         </trans-unit>
+         <trans-unit id="label.confirm_password">
+                        <source>label.confirm_password</source>
+                        <target>Confirm password</target>
+         </trans-unit>
 
 
 
