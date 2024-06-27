@@ -116,5 +116,4 @@ class NoteRepository extends ServiceEntityRepository
     {
         return $queryBuilder ?? $this->createQueryBuilder('note');
     }
-
 }

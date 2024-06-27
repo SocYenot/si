@@ -159,6 +159,46 @@
                      <source>label.password</source>
                      <target>Hasło</target>
        </trans-unit>
+        <trans-unit id="label.new_email">
+            <source>label.new_email</source>
+            <target>Nowy email</target>
+        </trans-unit>
+        <trans-unit id="label.confirm_email">
+            <source>label.confirm_email</source>
+            <target>Potwierdź email</target>
+        </trans-unit>
+        <trans-unit id="action.change_email">
+            <source>action.change_email</source>
+            <target>Zmień email</target>
+        </trans-unit>
+        <trans-unit id="action.change_password">
+            <source>action.change_password</source>
+            <target>Zmień hasło</target>
+        </trans-unit>
+        <trans-unit id="message.must_be_logged_in">
+            <source>message.must_be_logged_in</source>
+            <target>Musisz się zalgować aby to zrobić</target>
+        </trans-unit>
+        <trans-unit id="message.password_does_not_match">
+            <source>message.password_does_not_match</source>
+            <target>Hasło nie pasuje</target>
+        </trans-unit>
+        <trans-unit id="message.confirm_password_does_not_match">
+            <source>message.confirm_password_does_not_match</source>
+            <target>Hasło nie pasuje</target>
+        </trans-unit>
+        <trans-unit id="message.confirm_email_does_not_match">
+            <source>message.confirm_email_does_not_match</source>
+            <target>Email nie pasuje</target>
+        </trans-unit>
+        <trans-unit id="message.form_error">
+            <source>message.form_error</source>
+            <target>Błąd ze strony formularza</target>
+        </trans-unit>
+        <trans-unit id="message.record_not_found">
+            <source>message.record_not_found</source>
+            <target>Nie znaleziono</target>
+        </trans-unit>
        <trans-unit id="label.author">
                             <source>label.author</source>
                             <target>Twórca</target>
@@ -167,7 +207,19 @@
                                      <source>action.change</source>
                                      <target>Edytuj konto</target>
                              </trans-unit>
-<trans-unit id="message.changed_successfully">
+              <trans-unit id="action.logout">
+                                              <source>action.logout</source>
+                                              <target>Wyloguj</target>
+                                      </trans-unit>
+              <trans-unit id="action.login">
+                                    <source>action.login</source>
+                                    <target>Zaloguj</target>
+              </trans-unit>
+              <trans-unit id="message.deleted_successfully">
+                                    <source>message.deleted_successfully</source>
+                                    <target>Usunięto pomyślnie</target>
+              </trans-unit>
+              <trans-unit id="message.changed_successfully">
                                 <source>message.changed_successfully</source>
                                 <target>Zmieniono pomyślnie</target>
                   </trans-unit>

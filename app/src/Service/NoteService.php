@@ -5,7 +5,6 @@
 
 namespace App\Service;
 
-
 use App\Entity\Note;
 use App\Repository\NoteRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
@@ -72,6 +71,4 @@ class NoteService implements NoteServiceInterface
     {
         $this->noteRepository->delete($note);
     }
-
-
 }

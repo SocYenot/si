@@ -14,7 +14,6 @@ use Knp\Component\Pager\PaginatorInterface;
 use App\Dto\TaskListFiltersDto;
 use App\Dto\TaskListInputFiltersDto;
 
-
 /**
  * Class TaskService.
  */
@@ -36,8 +35,8 @@ class TaskService implements TaskServiceInterface
      *
      *
      * @param CategoryServiceInterface $categoryService Category service
-     * @param TaskRepository     $taskRepository Task repository
-     * @param PaginatorInterface $paginator      Paginator
+     * @param TaskRepository           $taskRepository  Task repository
+     * @param PaginatorInterface       $paginator       Paginator
      *
      */
     public function __construct(private readonly CategoryServiceInterface $categoryService, private readonly TaskRepository $taskRepository, private readonly PaginatorInterface $paginator)
@@ -47,11 +46,11 @@ class TaskService implements TaskServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int $page Page number
-     * * @param User $author Tasks author
-     * * @param TaskListInputFiltersDto $filters Filters
-     * *
-     * * @return PaginationInterface<string, mixed> Paginated list
+     *@param int                     $page    Page number
+     *@param User                    $author  Tasks author
+     *@param TaskListInputFiltersDto $filters Filters
+     *
+     *@return PaginationInterface<string, mixed> Paginated list
  */
     public function getPaginatedList(int $page, UserInterface $author, TaskListInputFiltersDto $filters): PaginationInterface
     {
@@ -63,13 +62,13 @@ class TaskService implements TaskServiceInterface
                 $page,
                 self::PAGINATOR_ITEMS_PER_PAGE
             );
-        } else {
-            return $this->paginator->paginate(
-                $this->taskRepository->queryByAuthor($author, $filters),
-                $page,
-                self::PAGINATOR_ITEMS_PER_PAGE
-            );
         }
+
+        return $this->paginator->paginate(
+            $this->taskRepository->queryByAuthor($author, $filters),
+            $page,
+            self::PAGINATOR_ITEMS_PER_PAGE
+        );
     }
 
     /**
@@ -103,9 +102,6 @@ class TaskService implements TaskServiceInterface
     {
         return new TaskListFiltersDto(
             null !== $filters->categoryId ? $this->categoryService->findOneById($filters->categoryId) : null,
-
         );
     }
-
-
 }

@@ -38,7 +38,8 @@ class NoteType extends AbstractType
                 'label' => 'label.title',
                 'required' => true,
                 'attr' => ['max_length' => 255],
-            ]);
+            ]
+        );
         $builder->add(
             'category',
             EntityType::class,
@@ -77,4 +78,3 @@ class NoteType extends AbstractType
         return 'note';
     }
 }
-

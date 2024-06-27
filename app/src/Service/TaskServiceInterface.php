@@ -18,7 +18,10 @@ interface TaskServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int $page Page number
+     * @param int                     $page    Page number
+     *
+     * @param User                    $author  Author
+     * @param TaskListInputFiltersDto $filters Filters
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
