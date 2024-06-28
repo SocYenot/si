@@ -1,11 +1,12 @@
 <?php
+
 /**
- * Change controller
+ *  Admin Change Controller
  */
 namespace App\Controller;
 
 use App\Form\Type\PasswordChangeType;
-use App\Form\Type\EmailChangeType;
+use App\Form\Type\AdminEmailChangeType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,11 +16,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use App\Entity\User;
 
 /**
- * Class Change Controller
+ * Class Admin Change Controller
  */
-class ChangeController extends AbstractController
+class AdminChangeController extends AbstractController
 {
     /**
      * Constructor.
@@ -30,48 +32,43 @@ class ChangeController extends AbstractController
     }
 
     /**
-     * change account data
+     * Change other user's account data
      *
-     * @param Request                     $request        The current HTTP request
-     * @param UserPasswordHasherInterface $passwordHasher The password hasher service
-     * @param EntityManagerInterface      $entityManager  The entity manager for persisting changes
+     * @param Request                     $request
+     * @param UserPasswordHasherInterface $passwordHasher
+     * @param EntityManagerInterface      $entityManager
+     * @param User                        $user
      *
-     * @return Response The HTTP response
-     *
+     * @return Response
      */
-    #[Route('/change', name: 'change')]
-    public function change(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
+    #[Route('/admin/change/{id}', name: 'admin_change')]
+    public function change(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager, User $user): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
 
-        $user = $this->getUser();
-
-
-        if (!$user || !$user instanceof PasswordAuthenticatedUserInterface) {
-            throw new AccessDeniedException($this->translator->trans('message.must_be_logged_in'));
-        }
 
         $passwordForm = $this->createForm(PasswordChangeType::class);
-        $emailForm = $this->createForm(EmailChangeType::class);
+        $emailForm = $this->createForm(AdminEmailChangeType::class);
 
         $passwordForm->handleRequest($request);
         $emailForm->handleRequest($request);
 
         if ($passwordForm->isSubmitted() && $passwordForm->isValid()) {
             $currentPassword = $passwordForm->get('currentPassword')->getData();
-            if (!$passwordHasher->isPasswordValid($user, $currentPassword)) {
-                $this->addFlash('error', $this->translator->trans('message.password_does_not_match'));
-
-                return $this->redirectToRoute('change');
-            }
-
             $newPassword = $passwordForm->get('newPassword')->getData();
             $confirmNewPassword = $passwordForm->get('confirmPassword')->getData();
+
+            if (!$passwordHasher->isPasswordValid($user, $currentPassword)) {
+                $this->addFlash('error', $this->translator->trans('message.invalid_current_password'));
+
+                return $this->redirectToRoute('admin_change', ['id' => $user->getId()]);
+            }
 
             if ($newPassword !== $confirmNewPassword) {
                 $this->addFlash('error', $this->translator->trans('message.confirm_password_does_not_match'));
 
-                return $this->redirectToRoute('change');
+                return $this->redirectToRoute('admin_change', ['id' => $user->getId()]);
             }
 
             $encodedPassword = $passwordHasher->hashPassword($user, $newPassword);
@@ -82,17 +79,25 @@ class ChangeController extends AbstractController
 
             $this->addFlash('success', $this->translator->trans('message.changed_successfully'));
 
-            return $this->redirectToRoute('task_index');
+            return $this->redirectToRoute('admin_change', ['id' => $user->getId()]);
         }
 
         if ($emailForm->isSubmitted() && $emailForm->isValid()) {
+            $currentEmail = $emailForm->get('currentEmail')->getData();
             $newEmail = $emailForm->get('newEmail')->getData();
             $confirmNewEmail = $emailForm->get('confirmEmail')->getData();
+
+
+            if ($currentEmail !== $user->getEmail()) {
+                $this->addFlash('error', $this->translator->trans('message.invalid_current_email'));
+
+                return $this->redirectToRoute('admin_change', ['id' => $user->getId()]);
+            }
 
             if ($newEmail !== $confirmNewEmail) {
                 $this->addFlash('error', $this->translator->trans('message.confirm_email_does_not_match'));
 
-                return $this->redirectToRoute('change');
+                return $this->redirectToRoute('admin_change', ['id' => $user->getId()]);
             }
 
             if ($user->getEmail() !== $newEmail) {
@@ -103,13 +108,14 @@ class ChangeController extends AbstractController
 
                 $this->addFlash('success', $this->translator->trans('message.changed_successfully'));
 
-                return $this->redirectToRoute('task_index');
+                return $this->redirectToRoute('admin_change', ['id' => $user->getId()]);
             }
         }
 
-        return $this->render('change/index.html.twig', [
+        return $this->render('change/admin.html.twig', [
             'passwordForm' => $passwordForm->createView(),
             'emailForm' => $emailForm->createView(),
+            'user' => $user,
         ]);
     }
 }

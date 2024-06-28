@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.change'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'change_account_data'|trans }} {{ user.username }}</h1>
+<div class="row">
+    <div class="col-md-5">
+        <div class="form-container">
+
+            {{ form_start(passwordForm) }}
+            {% if not passwordForm.vars.valid %}
+                {% include 'default/_single_alert_message.html.twig' with {
+                    type: 'danger',
+                    message: 'message.form_error'|trans,
+                } %}
+            {% endif %}
+            {{ form_widget(passwordForm) }}
+            <div class="d-flex flex-row-reverse">
+                <input type="submit" value="{{ 'action.change_password'|trans }}" class="btn btn-primary"/>
+            </div>
+            {{ form_end(passwordForm) }}
+        </div>
+    </div>
+
+    <div class="col-md-2">
+    </div>
+
+    <div class="col-md-5">
+        <div class="form-container">
+
+
+            {{ form_start(emailForm) }}
+            {% if not emailForm.vars.valid %}
+                {% include 'default/_single_alert_message.html.twig' with {
+                    type: 'danger',
+                    message: 'message.form_error'|trans,
+                } %}
+            {% endif %}
+            {{ form_widget(emailForm) }}
+            <div class="p-1`">
+
+            </div>
+            <div class="d-flex flex-row-reverse">
+                <input type="submit" value="{{ 'action.change_email'|trans }}" class="btn btn-primary"/>
+            </div>
+            {{ form_end(emailForm) }}
+        </div>
+    </div>
+</div>
+
+    <div class="form-group row float-sm-left mt-3">
+        <a href="{{ path('task_index') }}" class="btn btn-link">
+            {{ 'action.back_to_list'|trans }}
+        </a>
+    </div>
+{% endblock %}

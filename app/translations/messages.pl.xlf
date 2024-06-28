@@ -14,6 +14,18 @@
         <source>label.title</source>
         <target>Tytuł</target>
       </trans-unit>
+        <trans-unit id="label.current_email">
+            <source>label.current_email</source>
+            <target>Obecny email</target>
+        </trans-unit>
+        <trans-unit id="label.remember_me">
+            <source>label.remember_me</source>
+            <target>Zapamiętaj mnie</target>
+        </trans-unit>
+        <trans-unit id="change_account_data">
+            <source>change_account_data</source>
+            <target>Zmień dane użytkownika</target>
+        </trans-unit>
       <trans-unit id="label.content">
         <source>label.content</source>
         <target>Zawartość</target>
@@ -58,10 +70,26 @@
         <source>action.show</source>
         <target>Pokaż</target>
       </trans-unit>
+        <trans-unit id="message.invalid_current_email">
+            <source>message.invalid_current_email</source>
+            <target>Email nie pasuje</target>
+        </trans-unit>
+        <trans-unit id="message.invalid_current_password">
+            <source>message.invalid_current_password</source>
+            <target>Hasło nie pasuje</target>
+        </trans-unit>
       <trans-unit id="action.delete">
               <source>action.delete</source>
               <target>Usuń</target>
       </trans-unit>
+        <trans-unit id="action.choose">
+            <source>action.choose</source>
+            <target>Edytuj użytkowników</target>
+        </trans-unit>
+        <trans-unit id="title.choice">
+            <source>title.choice</source>
+            <target>Lista użytkowników</target>
+        </trans-unit>
       <trans-unit id="action.create">
                 <source>action.create</source>
                 <target> Utwórz nowy wpis</target>
@@ -231,6 +259,18 @@
                         <source>label.current_password</source>
                         <target>Obecne hasło</target>
                   </trans-unit>
+        <trans-unit id="title.log_in">
+            <source>title.log_in</source>
+            <target>Jesteś zalogowany jako</target>
+        </trans-unit>
+        <trans-unit id="label.signing_in">
+            <source>label.signing_in</source>
+            <target>Proszę się zalogować</target>
+        </trans-unit>
+        <trans-unit id="button.sign_in">
+            <source>button.sign_in</source>
+            <target>Zaloguj się</target>
+        </trans-unit>
          <trans-unit id="label.new_password">
                         <source>label.new_password</source>
                         <target>Nowe hasło</target>

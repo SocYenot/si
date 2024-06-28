@@ -9,6 +9,8 @@ use App\Repository\NoteRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Note.
@@ -57,6 +59,9 @@ class Note
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 500)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 500)]
     private ?string $title = null;
 
     /**
@@ -74,6 +79,8 @@ class Note
      */
     #[ORM\Column(type: 'string', length: 500)]
     #[Gedmo\Slug(fields: ['title'])]
+    #[Assert\Type('string')]
+    #[Assert\Length(min: 3, max: 64)]
     private ?string $slug;
 
     /**

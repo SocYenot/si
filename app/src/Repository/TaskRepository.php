@@ -80,7 +80,6 @@ class TaskRepository extends ServiceEntityRepository
             ->orderBy('task.updatedAt', 'DESC');
 
         if (!$this->security->isGranted('ROLE_ADMIN')) {
-            // Apply regular user filters
             $queryBuilder = $this->applyFiltersToList($queryBuilder, $filters);
         }
 

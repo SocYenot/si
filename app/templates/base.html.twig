@@ -24,6 +24,9 @@
                 {% else %}
                     <a href="{{ url('app_login') }}" class="btn btn-outline-primary">{{ 'action.login'|trans }}</a>
                 {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ url('admin_choice') }}" class="btn btn-outline-primary">{{ 'action.choose'|trans }}</a>
+                {% endif %}
 
             </div>
         </div>

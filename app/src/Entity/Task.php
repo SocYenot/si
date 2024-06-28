@@ -58,6 +58,9 @@ class Task
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 255)]
     private ?string $title = null;
 
     /**
@@ -75,6 +78,8 @@ class Task
      */
     #[ORM\Column(type: 'string', length: 255)]
     #[Gedmo\Slug(fields: ['title'])]
+    #[Assert\Type('string')]
+    #[Assert\Length(min: 3, max: 64)]
     private ?string $slug;
 
     /**
