@@ -39,7 +39,7 @@ class Task
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'create')]
-    private ?DateTimeImmutable $createdAt;
+    private ?DateTimeImmutable $createdAt = null;
 
     /**
      * Updated at.
@@ -50,7 +50,7 @@ class Task
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'update')]
-    private ?DateTimeImmutable $updatedAt;
+    private ?DateTimeImmutable $updatedAt = null;
 
     /**
      * Title.
@@ -80,7 +80,7 @@ class Task
     #[Gedmo\Slug(fields: ['title'])]
     #[Assert\Type('string')]
     #[Assert\Length(min: 3, max: 64)]
-    private ?string $slug;
+    private ?string $slug = null;
 
     /**
      * Author.
@@ -91,7 +91,7 @@ class Task
     #[ORM\JoinColumn(nullable: false)]
     #[Assert\NotBlank]
     #[Assert\Type(User::class)]
-    private ?User $author;
+    private ?User $author = null;
 
     /**
      * Getter for Id.

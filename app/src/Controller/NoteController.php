@@ -19,7 +19,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 /**
  * Class NoteController.
  */
-#[Route('/note')]
+#[\Symfony\Component\Routing\Attribute\Route('/note')]
 class NoteController extends AbstractController
 {
     /**
@@ -39,7 +39,7 @@ class NoteController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route(name: 'note_index', methods: 'GET')]
+    #[\Symfony\Component\Routing\Attribute\Route(name: 'note_index', methods: 'GET')]
     public function index(#[MapQueryParameter] int $page = 1): Response
     {
         $pagination = $this->noteService->getPaginatedList($page);
@@ -54,7 +54,7 @@ class NoteController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}', name: 'note_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
+    #[\Symfony\Component\Routing\Attribute\Route('/{id}', name: 'note_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
     public function show(Note $note): Response
     {
         return $this->render('note/show.html.twig', ['note' => $note]);
@@ -67,7 +67,7 @@ class NoteController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/create', name: 'note_create', methods: ['GET', 'POST'])]
+    #[\Symfony\Component\Routing\Attribute\Route('/create', name: 'note_create', methods: ['GET', 'POST'])]
     public function create(Request $request): Response
     {
         $note = new Note();
@@ -98,7 +98,7 @@ class NoteController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/edit', name: 'note_edit', requirements: ['id' => '[1-9]\d*'], methods: ['GET', 'PUT'])]
+    #[\Symfony\Component\Routing\Attribute\Route('/{id}/edit', name: 'note_edit', requirements: ['id' => '[1-9]\d*'], methods: ['GET', 'PUT'])]
     public function edit(Request $request, Note $note): Response
     {
         $form = $this->createForm(NoteType::class, $note, [
@@ -132,7 +132,7 @@ class NoteController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/delete', name: 'note_delete', requirements: ['id' => '[1-9]\d*'], methods: ['GET', 'DELETE'])]
+    #[\Symfony\Component\Routing\Attribute\Route('/{id}/delete', name: 'note_delete', requirements: ['id' => '[1-9]\d*'], methods: ['GET', 'DELETE'])]
     public function delete(Request $request, Note $note): Response
     {
         $form = $this->createForm(FormType::class, $note, [

@@ -1,39 +1,30 @@
-./   1) src/Controller/AdminChangeController.php (no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_separation, phpdoc_trim, no_unused_imports, no_extra_blank_lines, blank_lines_before_namespace)
-   2) src/Controller/AdminChoiceController.php (no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_trim, no_unused_imports, no_extra_blank_lines, blank_lines_before_namespace)
-   3) src/Controller/ChangeController.php (phpdoc_summary, phpdoc_separation, phpdoc_trim, no_extra_blank_lines, blank_lines_before_namespace)
-   4) src/Controller/SecurityController.php (phpdoc_summary, phpdoc_separation, phpdoc_trim, blank_lines_before_namespace)
-   5) src/Controller/TaskController.php (no_unused_imports)
-   6) src/DataFixtures/NoteFixtures.php (no_unused_imports)
-   7) src/Entity/Category.php (fully_qualified_strict_types, no_superfluous_phpdoc_tags, global_namespace_import, phpdoc_trim, no_unused_imports)
-   8) src/Entity/Note.php (single_space_around_construct, single_quote, no_superfluous_phpdoc_tags, global_namespace_import, phpdoc_trim, no_unused_imports, phpdoc_trim_consecutive_blank_line_separation)
-   9) src/Entity/Task.php (class_attributes_separation, single_space_around_construct, single_quote, no_superfluous_phpdoc_tags, global_namespace_import, phpdoc_trim, no_unused_imports, phpdoc_trim_consecutive_blank_line_separation)
-  10) src/Entity/User.php (no_superfluous_phpdoc_tags, phpdoc_trim, phpdoc_align)
-  11) src/Form/Type/AdminEmailChangeType.php (class_attributes_separation, no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_trim, no_unused_imports, blank_lines_before_namespace)
-  12) src/Form/Type/EmailChangeType.php (class_attributes_separation, no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_trim, blank_lines_before_namespace)
-  13) src/Form/Type/PasswordChangeType.php (class_attributes_separation, no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_trim, blank_lines_before_namespace)
-  14) src/Kernel.php (phpdoc_summary, blank_lines_before_namespace)
-  15) src/Repository/CategoryRepository.php (nullable_type_declaration_for_default_null_value, blank_lines_before_namespace)
-  16) src/Repository/NoteRepository.php (nullable_type_declaration_for_default_null_value)
-  17) src/Repository/TaskRepository.php (class_attributes_separation, nullable_type_declaration_for_default_null_value)
-  18) src/Repository/UserRepository.php (no_extra_blank_lines, blank_lines_before_namespace)
-  19) src/Service/CategoryService.php (class_attributes_separation, statement_indentation)
-  20) src/Service/CategoryServiceInterface.php (class_attributes_separation)
-  21) src/Service/TaskService.php (align_multiline_comment, phpdoc_trim, phpdoc_trim_consecutive_blank_line_separation, phpdoc_align)
-  22) src/Service/TaskServiceInterface.php (phpdoc_separation)
+   1) src/Controller/AdminChangeController.php (no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_separation, phpdoc_trim, no_unused_imports, no_extra_blank_lines, blank_lines_before_namespace)
+   2) src/Controller/AdminChoiceController.php (no_superfluous_phpdoc_tags, no_empty_phpdoc, phpdoc_summary, phpdoc_trim, no_unused_imports, no_extra_blank_lines, blank_lines_before_namespace)
+   3) src/Controller/ChangeController.php (phpdoc_summary, phpdoc_separation, phpdoc_trim, no_unused_imports, no_extra_blank_lines, blank_lines_before_namespace)
+   4) src/Controller/NoteController.php (no_unused_imports)
+   5) src/Controller/SecurityController.php (phpdoc_summary, phpdoc_separation, phpdoc_trim, blank_lines_before_namespace)
+   6) src/Controller/TaskController.php (no_unused_imports)
+   7) src/DataFixtures/NoteFixtures.php (no_unused_imports)
+   8) src/Entity/Category.php (fully_qualified_strict_types, no_superfluous_phpdoc_tags, global_namespace_import, phpdoc_trim, no_unused_imports)
+   9) src/Entity/Note.php (single_space_around_construct, single_quote, no_superfluous_phpdoc_tags, global_namespace_import, phpdoc_trim, no_unused_imports, phpdoc_trim_consecutive_blank_line_separation)
+  10) src/Entity/Task.php (class_attributes_separation, single_space_around_construct, single_quote, no_superfluous_phpdoc_tags, global_namespace_import, phpdoc_trim, no_unused_imports, phpdoc_trim_consecutive_blank_line_separation)
+  11) src/Entity/User.php (no_superfluous_phpdoc_tags, phpdoc_trim, phpdoc_align)
+  12) src/Form/Type/AdminEmailChangeType.php (class_attributes_separation, no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_trim, no_unused_imports, blank_lines_before_namespace)
+  13) src/Form/Type/EmailChangeType.php (class_attributes_separation, no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_trim, blank_lines_before_namespace)
+  14) src/Form/Type/NoteType.php (function_declaration)
+  15) src/Form/Type/PasswordChangeType.php (class_attributes_separation, no_superfluous_phpdoc_tags, phpdoc_summary, phpdoc_trim, blank_lines_before_namespace)
+  16) src/Form/Type/TaskType.php (function_declaration)
+  17) src/Kernel.php (phpdoc_summary, blank_lines_before_namespace)
+  18) src/Repository/CategoryRepository.php (nullable_type_declaration_for_default_null_value, blank_lines_before_namespace)
+  19) src/Repository/NoteRepository.php (nullable_type_declaration_for_default_null_value)
+  20) src/Repository/TaskRepository.php (nullable_type_declaration_for_default_null_value)
+  21) src/Repository/UserRepository.php (function_declaration, no_extra_blank_lines, blank_lines_before_namespace)
+  22) src/Service/CategoryService.php (class_attributes_separation, statement_indentation)
+  23) src/Service/CategoryServiceInterface.php (class_attributes_separation)
+  24) src/Service/TaskService.php (align_multiline_comment, phpdoc_trim, phpdoc_trim_consecutive_blank_line_separation, phpdoc_align)
+  25) src/Service/TaskServiceInterface.php (phpdoc_separation)
 
-Found 22 of 41 files that can be fixed in 7.815 seconds, 18.00 MB memory used
-
-FILE: /home/wwwroot/app/src/Controller/AdminChoiceController.php
-----------------------------------------------------------------------
-FOUND 3 ERRORS AFFECTING 3 LINES
-----------------------------------------------------------------------
- 23 | ERROR | Superfluous parameter comment
- 40 | ERROR | Doc comment for parameter "$user" missing
- 42 | ERROR | Missing @return tag in function comment
-----------------------------------------------------------------------
-
-Time: 25.09 secs; Memory: 10MB
-
+Found 25 of 41 files that can be fixed in 2.568 seconds, 18.00 MB memory used
  ------- -------- ---- ---------------------- 
   State   Domain   Id   Message Preview (en)  
  ------- -------- ---- ---------------------- 
@@ -43,7 +34,7 @@ Time: 25.09 secs; Memory: 10MB
  ------- -------- ---- ---------------------- ------------------------------- 
 
 [notice] Migrating up to DoctrineMigrations\Version20240626121950
-[notice] finished in 2736.6ms, used 24M memory, 6 migrations executed, 14 sql queries
+[notice] finished in 3041.5ms, used 24M memory, 6 migrations executed, 14 sql queries
 
  [OK] Successfully migrated to version: DoctrineMigrations\Version20240626121950                                        
 

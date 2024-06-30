@@ -25,7 +25,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 /**
  * Class TaskController.
  */
-#[Route('/task')]
+#[\Symfony\Component\Routing\Attribute\Route('/task')]
 class TaskController extends AbstractController
 {
     /**
@@ -46,7 +46,7 @@ class TaskController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route(name: 'task_index', methods: 'GET')]
+    #[\Symfony\Component\Routing\Attribute\Route(name: 'task_index', methods: 'GET')]
     public function index(#[MapQueryString(resolver: TaskListInputFiltersDtoResolver::class)] TaskListInputFiltersDto $filters, #[MapQueryParameter] int $page = 1): Response
     {
         /** @var User $user */
@@ -63,7 +63,7 @@ class TaskController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}', name: 'task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
+    #[\Symfony\Component\Routing\Attribute\Route('/{id}', name: 'task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
     #[IsGranted('VIEW', subject: 'task')]
     public function show(Task $task): Response
     {
@@ -77,7 +77,7 @@ class TaskController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/create', name: 'task_create', methods: ['GET', 'POST'])]
+    #[\Symfony\Component\Routing\Attribute\Route('/create', name: 'task_create', methods: ['GET', 'POST'])]
     public function create(Request $request): Response
     {
         /** @var User $user */
@@ -108,7 +108,7 @@ class TaskController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/edit', name: 'task_edit', requirements: ['id' => '[1-9]\d*'], methods: ['GET', 'PUT'])]
+    #[\Symfony\Component\Routing\Attribute\Route('/{id}/edit', name: 'task_edit', requirements: ['id' => '[1-9]\d*'], methods: ['GET', 'PUT'])]
     #[IsGranted('EDIT', subject: 'task')]
     public function edit(Request $request, Task $task): Response
     {
@@ -140,7 +140,7 @@ class TaskController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/delete', name: 'task_delete', requirements: ['id' => '[1-9]\d*'], methods: ['GET', 'DELETE'])]
+    #[\Symfony\Component\Routing\Attribute\Route('/{id}/delete', name: 'task_delete', requirements: ['id' => '[1-9]\d*'], methods: ['GET', 'DELETE'])]
     #[IsGranted('DELETE', subject: 'task')]
     public function delete(Request $request, Task $task): Response
     {

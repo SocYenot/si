@@ -31,17 +31,15 @@ use Symfony\Component\Security\Core\Security;
  */
 class TaskRepository extends ServiceEntityRepository
 {
-    private Security $security;
     /**
      * Constructor.
      *
      * @param ManagerRegistry $registry Manager registry
      * @param Security        $security Security service
      */
-    public function __construct(ManagerRegistry $registry, Security $security)
+    public function __construct(ManagerRegistry $registry, private readonly Security $security)
     {
         parent::__construct($registry, Task::class);
-        $this->security = $security;
     }
 
     /**

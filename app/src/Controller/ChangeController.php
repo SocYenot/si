@@ -39,7 +39,7 @@ class ChangeController extends AbstractController
      * @return Response The HTTP response
      *
      */
-    #[Route('/change', name: 'change')]
+    #[\Symfony\Component\Routing\Attribute\Route('/change', name: 'change')]
     public function change(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
     {
 

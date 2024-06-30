@@ -40,7 +40,7 @@ class Note
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'create')]
-    private ?DateTimeImmutable $createdAt;
+    private ?DateTimeImmutable $createdAt = null;
 
     /**
      * Updated at.
@@ -51,7 +51,7 @@ class Note
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'update')]
-    private ?DateTimeImmutable $updatedAt;
+    private ?DateTimeImmutable $updatedAt = null;
 
     /**
      * Title.
@@ -81,7 +81,7 @@ class Note
     #[Gedmo\Slug(fields: ['title'])]
     #[Assert\Type('string')]
     #[Assert\Length(min: 3, max: 64)]
-    private ?string $slug;
+    private ?string $slug = null;
 
     /**
      * Getter for Id.

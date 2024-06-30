@@ -23,7 +23,7 @@ class AdminChoiceController extends AbstractController
      *
      * @return Response
      */
-    #[Route('/admin/change', name: 'admin_choice')]
+    #[\Symfony\Component\Routing\Attribute\Route('/admin/change', name: 'admin_choice')]
     public function userList(EntityManagerInterface $entityManager): Response
     {
         /** @var UserRepository $userRepository */
@@ -37,11 +37,11 @@ class AdminChoiceController extends AbstractController
     }
 
     /**
-     * @Route("/admin/change/{id}", name="admin_change_user")
      * @param User $user
      *
      * @return Response
      */
+    #[\Symfony\Component\Routing\Attribute\Route(path: '/admin/change/{id}', name: 'admin_change_user')]
     public function changeUser(User $user): Response
     {
         return $this->redirectToRoute('admin_change', ['id' => $user->getId()]);

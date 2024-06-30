@@ -35,8 +35,6 @@ class UserRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
 
-        return array_filter($users, function (User $user) {
-            return !in_array('ROLE_ADMIN', $user->getRoles());
-        });
+        return array_filter($users, fn(User $user) => !in_array('ROLE_ADMIN', $user->getRoles()));
     }
 }

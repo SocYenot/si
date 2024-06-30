@@ -41,7 +41,7 @@ class AdminChangeController extends AbstractController
      *
      * @return Response
      */
-    #[Route('/admin/change/{id}', name: 'admin_change')]
+    #[\Symfony\Component\Routing\Attribute\Route('/admin/change/{id}', name: 'admin_change')]
     public function change(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager, User $user): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
