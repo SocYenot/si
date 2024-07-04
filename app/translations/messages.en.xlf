@@ -10,6 +10,14 @@
         <source>label.id</source>
         <target>Id</target>
       </trans-unit>
+        <trans-unit id="change_account_data">
+            <source>change_account_data</source>
+            <target>Change user's data</target>
+        </trans-unit>
+        <trans-unit id="label.current_email">
+            <source>label.current_email</source>
+            <target>Current email</target>
+        </trans-unit>
       <trans-unit id="label.title">
         <source>label.title</source>
         <target>Title</target>
@@ -86,6 +94,22 @@
                 <source>action.save</source>
                 <target>Save</target>
       </trans-unit>
+        <trans-unit id="title.log_in">
+            <source>title.log_in</source>
+            <target>You're logged in as</target>
+        </trans-unit>
+        <trans-unit id="button.sign_in">
+            <source>button.sign_in</source>
+            <target>Sign in</target>
+        </trans-unit>
+        <trans-unit id="label.remember_me">
+            <source>label.remember_me</source>
+            <target>Remember me</target>
+        </trans-unit>
+        <trans-unit id="label.password">
+            <source>label.password</source>
+            <target>Password</target>
+        </trans-unit>
       <trans-unit id="title.task_create">
                <source>title.task_create</source>
               <target>Create task</target>
@@ -155,6 +179,119 @@
               <source>title.note_list</source>
               <target>Note list</target>
     </trans-unit>
+  <trans-unit id="action_logout">
+                      <source>action_logout</source>
+                      <target>Log out</target>
+         </trans-unit>
+         <trans-unit id="action_login">
+                       <source>action_login</source>
+                       <target>Log in</target>
+          </trans-unit>
+         <trans-unit id="label.email">
+                       <source>label.email</source>
+                       <target>Email</target>
+         </trans-unit>
+        <trans-unit id="label.signing_in">
+            <source>label.signing_in</source>
+            <target>Please sign in</target>
+        </trans-unit>
+         <trans-unit id="label.author">
+                       <source>label.author</source>
+                       <target>Author</target>
+         </trans-unit>
+        <trans-unit id="label.new_email">
+            <source>label.new_email</source>
+            <target>New email</target>
+        </trans-unit>
+        <trans-unit id="label.confirm_email">
+            <source>label.confirm_email</source>
+            <target>Confirm email</target>
+        </trans-unit>
+        <trans-unit id="action.change_email">
+            <source>action.change_email</source>
+            <target>Change email</target>
+        </trans-unit>
+        <trans-unit id="action.change_password">
+            <source>action.change_password</source>
+            <target>Change password</target>
+        </trans-unit>
+        <trans-unit id="message.must_be_logged_in">
+            <source>message.must_be_logged_in</source>
+            <target>You must be logged in to do that</target>
+        </trans-unit>
+        <trans-unit id="message.confirm_email_does_not_match">
+            <source>message.confirm_email_does_not_match</source>
+            <target>Email doesn't match</target>
+        </trans-unit>
+        <trans-unit id="message.confirm_password_does_not_match">
+            <source>message.confirm_password_does_not_match</source>
+            <target>Password doesn't match</target>
+        </trans-unit>
+        <trans-unit id="message.form_error">
+            <source>message.form_error</source>
+            <target>Form error</target>
+        </trans-unit>
+        <trans-unit id="message.password_does_not_match">
+            <source>message.password_does_not_match</source>
+            <target>Password doesn't match</target>
+        </trans-unit>
+        <trans-unit id="message.confirm_password_does_not_match ">
+            <source>message.confirm_password_does_not_match </source>
+            <target>Password doesn't match</target>
+        </trans-unit>
+         <trans-unit id="message.changed_successfully">
+                                <source>message.changed_successfully</source>
+                                <target>Changed successfully</target>
+                  </trans-unit>
+         <trans-unit id="title.change">
+                                <source>title.change</source>
+                                <target>Edit account</target>
+                  </trans-unit>
+        <trans-unit id="title.choice">
+            <source>title.choice</source>
+            <target>User list</target>
+        </trans-unit>
+         <trans-unit id="action.change">
+                       <source>action.change</source>
+                       <target>Edit account</target>
+               </trans-unit>
+        <trans-unit id="action.choose">
+            <source>action.choose</source>
+            <target>Edit users</target>
+        </trans-unit>
+        <trans-unit id="message.invalid_current_email">
+            <source>message.invalid_current_email</source>
+            <target>Invalid current email</target>
+        </trans-unit>
+        <trans-unit id="message.invalid_current_password">
+            <source>message.invalid_current_password</source>
+            <target>Invalid current password</target>
+        </trans-unit>
+         <trans-unit id="action.logout">
+                                <source>action.logout</source>
+                                <target>Log out</target>
+                        </trans-unit>
+         <trans-unit id="action.login">
+                                             <source>action.login</source>
+                                             <target>Log in</target>
+                       </trans-unit>
+         <trans-unit id="message.deleted_successfully">
+                                                      <source>message.deleted_successfully</source>
+                                                      <target>Deleted successfully</target>
+                                </trans-unit>
+
+         <trans-unit id="label.current_password">
+                        <source>label.current_password</source>
+                        <target>Current password</target>
+                  </trans-unit>
+         <trans-unit id="label.new_password">
+                        <source>label.new_password</source>
+                        <target>New password</target>
+         </trans-unit>
+         <trans-unit id="label.confirm_password">
+                        <source>label.confirm_password</source>
+                        <target>Confirm password</target>
+         </trans-unit>
 
 
 

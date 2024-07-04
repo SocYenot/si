@@ -24,13 +24,13 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
      */
     public function loadData(): void
     {
-        if (null === $this->manager || null === $this->faker) {
+        if (!$this->manager instanceof \Doctrine\Persistence\ObjectManager || !$this->faker instanceof \Faker\Generator) {
             return;
         }
 
         $this->createMany(30, 'note', function (int $i) {
             $note = new Note();
-            $note->setTitle($this->faker->words(rand(3, 40), true));
+            $note->setTitle($this->faker->words(random_int(3, 40), true));
             $note->setCreatedAt(
                 \DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween('-100 days', '-1 days')

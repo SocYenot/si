@@ -9,6 +9,7 @@ use App\Repository\TaskRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Task.
@@ -38,7 +39,7 @@ class Task
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'create')]
-    private ?DateTimeImmutable $createdAt;
+    private ?DateTimeImmutable $createdAt = null;
 
     /**
      * Updated at.
@@ -49,7 +50,7 @@ class Task
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'update')]
-    private ?DateTimeImmutable $updatedAt;
+    private ?DateTimeImmutable $updatedAt = null;
 
     /**
      * Title.
@@ -57,6 +58,9 @@ class Task
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 255)]
     private ?string $title = null;
 
     /**
@@ -74,7 +78,20 @@ class Task
      */
     #[ORM\Column(type: 'string', length: 255)]
     #[Gedmo\Slug(fields: ['title'])]
-    private ?string $slug;
+    #[Assert\Type('string')]
+    #[Assert\Length(min: 3, max: 64)]
+    private ?string $slug = null;
+
+    /**
+     * Author.
+     *
+     * @var User|null
+     */
+    #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EXTRA_LAZY')]
+    #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\Type(User::class)]
+    private ?User $author = null;
 
     /**
      * Getter for Id.
@@ -170,14 +187,49 @@ class Task
         return $this;
     }
 
+    /**
+     * Getter for slug.
+     *
+     * @return string|null Slug
+     */
     public function getSlug(): ?string
     {
         return $this->slug;
     }
 
+    /**
+     * Setter for slug.
+     *
+     * @param string|null $slug Slug
+     *
+     * @return string|null Slug
+     */
     public function setSlug(?string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Getter for author.
+     *
+     * @return User|null The author
+     */
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+    /**
+     * Setter for author.
+     *
+     * @param User|null $author Author
+     *
+     * @return User author Author
+     */
+    public function setAuthor(?User $author): static
+    {
+        $this->author = $author;
 
         return $this;
     }

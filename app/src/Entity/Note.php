@@ -9,6 +9,8 @@ use App\Repository\NoteRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Note.
@@ -38,7 +40,7 @@ class Note
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'create')]
-    private ?DateTimeImmutable $createdAt;
+    private ?DateTimeImmutable $createdAt = null;
 
     /**
      * Updated at.
@@ -49,7 +51,7 @@ class Note
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'update')]
-    private ?DateTimeImmutable $updatedAt;
+    private ?DateTimeImmutable $updatedAt = null;
 
     /**
      * Title.
@@ -57,6 +59,9 @@ class Note
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 500)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 500)]
     private ?string $title = null;
 
     /**
@@ -74,7 +79,9 @@ class Note
      */
     #[ORM\Column(type: 'string', length: 500)]
     #[Gedmo\Slug(fields: ['title'])]
-    private ?string $slug;
+    #[Assert\Type('string')]
+    #[Assert\Length(min: 3, max: 64)]
+    private ?string $slug = null;
 
     /**
      * Getter for Id.
@@ -170,11 +177,23 @@ class Note
         return $this;
     }
 
+    /**
+     * Getter for slug.
+     *
+     * @return string|null Slug
+     */
     public function getSlug(): ?string
     {
         return $this->slug;
     }
 
+    /**
+     * Setter for slug.
+     *
+     * @param string|null $slug Slug
+     *
+     * @return string|null Slug
+     */
     public function setSlug(?string $slug): static
     {
         $this->slug = $slug;

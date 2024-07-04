@@ -13,7 +13,27 @@
     {% endblock %}
 </head>
 <body>
-<main role="main" class="container-fluid">
+<header class="p-3 bg-light">
+    <div class="container">
+        <div class="d-flex flex-row-reverse">
+            <div class="text-end">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <span class="me-2">{{ app.user.email }}</span>
+                    <a href="{{ url('app_logout') }}" class="btn btn-outline-primary">{{ 'action.logout'|trans }}</a>
+                    <a href="{{ path('change') }}" class="btn btn-outline-primary">{{ 'action.change'|trans }}</a>
+                {% else %}
+                    <a href="{{ url('app_login') }}" class="btn btn-outline-primary">{{ 'action.login'|trans }}</a>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ url('admin_choice') }}" class="btn btn-outline-primary">{{ 'action.choose'|trans }}</a>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</header>
+
+        <main role="main" class="container-fluid">
     <div class="container-fluid">
         <div class="container-fluid">
             {% include 'default/_flash_messages.html.twig' %}
@@ -23,7 +43,6 @@
     </div>
 </main>
 {% block javascripts %}
-    {# {% block importmap %}{{ importmap('app') }}{% endblock %}#}
     <script
             src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
             integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="

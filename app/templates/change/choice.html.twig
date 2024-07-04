@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ 'title.choice' | trans }}</h1>
+    <div class="col-md-3">
+    </div>
+<div class="col-md-5">
+    <table class="table-striped">
+        <thead></thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td><a href="{{ path('admin_change', {'id': user.id}) }}" class="btn btn-outline-secondary">Edit</a></td>
+                </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

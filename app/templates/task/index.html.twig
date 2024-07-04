@@ -8,18 +8,17 @@
     <h1>{{ 'title.task_list'|trans }}</h1>
     {% if pagination is defined and pagination.items|length %}
 
-        <div class ="row">
+        <div class="row">
             <div class="col-lg-10 navigation text-center">
                 {{ knp_pagination_render(pagination) }}
             </div>
 
             <div class="col-lg-2 navigation text-center">
-                <a  href="{{ url('task_create')}}" title="{{ 'action.create'|trans }} " class="btn btn-primary">
+                <a href="{{ url('task_create') }}" title="{{ 'action.create'|trans }}" class="btn btn-primary">
                     {{ 'action.create'|trans }}
                 </a>
             </div>
         </div>
-
 
         <table class="table table-striped">
             <thead>
@@ -29,8 +28,10 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 'task.updatedAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'task.title') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.category'|trans, 'category.title') }}</th>
-                <th></th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.author'|trans, 'task.author') }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
+                <th></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -40,13 +41,19 @@
                     <td>{{ task.createdAt|format_date('long') }}</td>
                     <td>{{ task.updatedAt|format_date('long') }}</td>
                     <td>{{ task.title }}</td>
-                    <td>{{ task.category.title }}</td>
+                    <td>
+                        <a class="btn btn-outline-primary"
+                           href="{{ url('task_index', {'categoryId' : task.category.id}) }}"
+                           title="{{ task.category.title }}">
+                            {{ task.category.title }}
+                        </a>
+                    </td>
+                    <td>{{ task.author.email }}</td>
                     <td>
                         <a href="{{ url('task_show', {id: task.id}) }}" title="{{ 'action.show'|trans }}">
                             {{ 'action.show'|trans }}
                         </a>
                     </td>
-
                     <td>
                         <a href="{{ url('task_edit', {id: task.id}) }}" title="{{ 'action.edit'|trans }}">
                             {{ 'action.edit'|trans }}
