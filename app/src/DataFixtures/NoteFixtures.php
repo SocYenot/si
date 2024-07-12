@@ -6,7 +6,6 @@
 namespace App\DataFixtures;
 
 use App\Entity\Category;
-use App\Entity\Enum\NoteStatus;
 use App\Entity\Note;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 

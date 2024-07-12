@@ -33,11 +33,9 @@ class TaskService implements TaskServiceInterface
     /**
      * Constructor.
      *
-     *
      * @param CategoryServiceInterface $categoryService Category service
      * @param TaskRepository           $taskRepository  Task repository
      * @param PaginatorInterface       $paginator       Paginator
-     *
      */
     public function __construct(private readonly CategoryServiceInterface $categoryService, private readonly TaskRepository $taskRepository, private readonly PaginatorInterface $paginator)
     {
@@ -46,12 +44,12 @@ class TaskService implements TaskServiceInterface
     /**
      * Get paginated list.
      *
-     *@param int                     $page    Page number
-     *@param User                    $author  Tasks author
-     *@param TaskListInputFiltersDto $filters Filters
+     * @param int                     $page    Page number
+     * @param User                    $author  Tasks author
+     * @param TaskListInputFiltersDto $filters Filters
      *
-     *@return PaginationInterface<string, mixed> Paginated list
- */
+     * @return PaginationInterface<string, mixed> Paginated list
+     */
     public function getPaginatedList(int $page, UserInterface $author, TaskListInputFiltersDto $filters): PaginationInterface
     {
         $filters = $this->prepareFilters($filters);

@@ -2,10 +2,10 @@
 /**
  * User repository.
  */
+
 namespace App\Repository;
 
 use App\Entity\User;
-
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -35,6 +35,6 @@ class UserRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
 
-        return array_filter($users, fn(User $user) => !in_array('ROLE_ADMIN', $user->getRoles()));
+        return array_filter($users, fn (User $user) => !in_array('ROLE_ADMIN', $user->getRoles()));
     }
 }

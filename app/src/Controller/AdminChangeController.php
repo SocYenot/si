@@ -1,8 +1,8 @@
 <?php
-
 /**
- *  Admin Change Controller
+ * Admin Change Controller.
  */
+
 namespace App\Controller;
 
 use App\Form\Type\PasswordChangeType;
@@ -12,19 +12,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use App\Entity\User;
 
 /**
- * Class Admin Change Controller
+ * Class Admin Change Controller.
  */
 class AdminChangeController extends AbstractController
 {
     /**
      * Constructor.
+     *
      * @param TranslatorInterface $translator Translator
      */
     public function __construct(private readonly TranslatorInterface $translator)
@@ -32,21 +30,19 @@ class AdminChangeController extends AbstractController
     }
 
     /**
-     * Change other user's account data
+     * Change other user's account data.
      *
-     * @param Request                     $request
-     * @param UserPasswordHasherInterface $passwordHasher
-     * @param EntityManagerInterface      $entityManager
-     * @param User                        $user
+     * @param Request                     $request        Request
+     * @param UserPasswordHasherInterface $passwordHasher Password Hasher
+     * @param EntityManagerInterface      $entityManager  Entity Manager
+     * @param User                        $user           User
      *
-     * @return Response
+     * @return Response HTTP response
      */
     #[\Symfony\Component\Routing\Attribute\Route('/admin/change/{id}', name: 'admin_change')]
     public function change(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager, User $user): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-
-
 
         $passwordForm = $this->createForm(PasswordChangeType::class);
         $emailForm = $this->createForm(AdminEmailChangeType::class);
@@ -86,7 +82,6 @@ class AdminChangeController extends AbstractController
             $currentEmail = $emailForm->get('currentEmail')->getData();
             $newEmail = $emailForm->get('newEmail')->getData();
             $confirmNewEmail = $emailForm->get('confirmEmail')->getData();
-
 
             if ($currentEmail !== $user->getEmail()) {
                 $this->addFlash('error', $this->translator->trans('message.invalid_current_email'));

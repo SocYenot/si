@@ -2,6 +2,7 @@
 /**
  * Password Change Type.
  */
+
 namespace App\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -10,15 +11,15 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class Password Change Type
+ * Class Password Change Type.
  */
 class PasswordChangeType extends AbstractType
 {
     /**
      * Builds the form.
      *
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * @param FormBuilderInterface $builder Builder
+     * @param array                $options Options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -33,10 +34,11 @@ class PasswordChangeType extends AbstractType
                 'label' => 'label.confirm_password',
             ]);
     }
+
     /**
-     * Configures options
+     * Configures options.
      *
-     * @param OptionsResolver $resolver
+     * @param OptionsResolver $resolver Resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {
