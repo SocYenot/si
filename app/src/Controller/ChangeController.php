@@ -1,7 +1,8 @@
 <?php
 /**
- * Change controller
+ * Change controller.
  */
+
 namespace App\Controller;
 
 use App\Form\Type\PasswordChangeType;
@@ -11,18 +12,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Class Change Controller
+ * Class Change Controller.
  */
 class ChangeController extends AbstractController
 {
     /**
      * Constructor.
+     *
      * @param TranslatorInterface $translator Translator
      */
     public function __construct(private readonly TranslatorInterface $translator)
@@ -30,22 +31,18 @@ class ChangeController extends AbstractController
     }
 
     /**
-     * change account data
+     * change account data.
      *
      * @param Request                     $request        The current HTTP request
      * @param UserPasswordHasherInterface $passwordHasher The password hasher service
      * @param EntityManagerInterface      $entityManager  The entity manager for persisting changes
      *
      * @return Response The HTTP response
-     *
      */
     #[\Symfony\Component\Routing\Attribute\Route('/change', name: 'change')]
     public function change(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
     {
-
-
         $user = $this->getUser();
-
 
         if (!$user || !$user instanceof PasswordAuthenticatedUserInterface) {
             throw new AccessDeniedException($this->translator->trans('message.must_be_logged_in'));

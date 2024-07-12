@@ -1,27 +1,27 @@
 <?php
 /**
- * Admin Choice Controller
+ * Admin Choice Controller.
  */
+
 namespace App\Controller;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * class Admin Choice Controller
+ * Class AdminChoiceController.
  */
 class AdminChoiceController extends AbstractController
 {
     /**
-     * pick user from a list
-     * @param EntityManagerInterface $entityManager
+     * Pick user from a list.
      *
-     * @return Response
+     * @param EntityManagerInterface $entityManager Entity Manager
+     *
+     * @return Response HTTP response
      */
     #[\Symfony\Component\Routing\Attribute\Route('/admin/change', name: 'admin_choice')]
     public function userList(EntityManagerInterface $entityManager): Response
@@ -32,14 +32,15 @@ class AdminChoiceController extends AbstractController
 
         return $this->render('change/choice.html.twig', [
             'users' => $users,
-
         ]);
     }
 
     /**
-     * @param User $user
+     * Change user.
      *
-     * @return Response
+     * @param User $user User
+     *
+     * @return Response HTTP response
      */
     #[\Symfony\Component\Routing\Attribute\Route(path: '/admin/change/{id}', name: 'admin_change_user')]
     public function changeUser(User $user): Response

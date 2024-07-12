@@ -7,7 +7,6 @@ namespace App\Controller;
 
 use App\Entity\Task;
 use App\Form\Type\TaskType;
-use App\Service\TaskService;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use App\Entity\User;
 use App\Service\TaskServiceInterface;
@@ -19,7 +18,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryString;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
